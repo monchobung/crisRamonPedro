@@ -1,6 +1,21 @@
+import { Route, Switch } from "react-router-dom"
+import Home from "./screens/Home/Home"
+import Detalle from "./screens/Detalle/Detalle"
+import Favoritos from "./screens/Favoritos/Favoritos"
+import Series from "./screens/Series/Series"
+import Peliculas from "./screens/Peliculas/Peliculas"
+import Error from "./screens/Error/Error"
+
 function App() {
   return (
-    <p>React</p>
+    <Switch>
+      <Route path='/' exact={true} component={Home}/>
+      <Route path='/detalle' component={Detalle}/>
+      <Route path='/favoritos' component={Favoritos}/>
+      <Route path='/peliculas' component={Peliculas}/>
+      <Route path='/series' component={Series}/>
+      <Route path="" component={Error}/>
+    </Switch>
   );
 }
 
