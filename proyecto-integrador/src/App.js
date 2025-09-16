@@ -4,6 +4,8 @@ import Detalle from "./screens/Detalle/Detalle"
 import Favoritos from "./screens/Favoritos/Favoritos"
 import Series from "./screens/Series/Series"
 import Peliculas from "./screens/Peliculas/Peliculas"
+import PeliculasPopulares from "./screens/PeliculasPopulares/PeliculasPopulares"
+import PeliculasCartelera from "./screens/PeliculasCartelera/PeliculasCartelera"
 import Error from "./screens/Error/Error"
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
       <Route path='/favoritos' component={Favoritos}/>
       <Route path='/peliculas' component={Peliculas}/>
       <Route path='/series' component={Series}/>
+      <Route path="/peliculaspopulares" component={PeliculasPopulares}/>
+      <Route path="/peliculascartelera" component={PeliculasCartelera}/>
       <Route path="" component={Error}/>
     </Switch>
   );
