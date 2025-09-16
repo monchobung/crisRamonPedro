@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './styles.css'
 
 class PeliculasPopulares extends Component{
     constructor(props){
@@ -25,7 +26,7 @@ class PeliculasPopulares extends Component{
         
         return(
             <React.Fragment>
-
+              
             </React.Fragment>
         )
     }
