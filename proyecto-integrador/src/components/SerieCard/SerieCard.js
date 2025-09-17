@@ -1,13 +1,13 @@
 import React from 'react';
 
-function PeliculaCard(props){
+function SerieCard(props){
   const data = props.data;
 
   return (
-    <article className="single-card-movie">
+    <article class="single-card-tv">
       <div className="cardBody">
-      <img class="col-md-6" src='' alt=""/>
-        <h5 className="card-title">{data.title}</h5>
+        
+        <h5 className="card-title">{data.original_name}</h5>
         <p className="card-text">{data.overview}</p>
         <a className="btn btn-primary" href={"/detalle"}>Ver más</a> {/* por ahora no funca el link*/}
       </div>
@@ -15,4 +15,4 @@ function PeliculaCard(props){
   );
 }
 
-export default PeliculaCard;
+export default SerieCard;

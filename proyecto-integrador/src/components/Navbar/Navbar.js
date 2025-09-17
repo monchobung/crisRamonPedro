@@ -21,13 +21,23 @@ function Navbar(){
             </NavLink>
             </li>
           <li>
-          <NavLink to="/peliculas">
-            Películas
+          <NavLink to="/peliculasCartelera">
+            Películas en Cartelera
             </NavLink> 
             </li>
           <li>
-          <NavLink to="/series">
-            Series
+          <NavLink to="/peliculasPopulares">
+            Peliculas Populares
+            </NavLink>
+            </li>
+            <li>
+            <NavLink to="/seriesCartelera">
+            Series en Cartelera
+            </NavLink> 
+            </li>
+          <li>
+          <NavLink to="/seriesPopulares">
+            Series Populares
             </NavLink>
             </li>
           <li>

@@ -6,6 +6,8 @@ import Series from "./screens/Series/Series";
 import Peliculas from "./screens/Peliculas/Peliculas";
 import PeliculasPopulares from "./screens/PeliculasPopulares/PeliculasPopulares";
 import PeliculasCartelera from "./screens/PeliculasCartelera/PeliculasCartelera";
+import SeriesPopulares from "./screens/SeriesPopulares/SeriesPopulares";
+import SeriesCartelera from "./screens/SeriesCartelera/SeriesCartelera";
 import Error from "./screens/Error/Error";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -21,8 +23,10 @@ function App() {
         <Route path="/favoritos" component={Favoritos} />
         <Route path="/peliculas" component={Peliculas} />
         <Route path="/series" component={Series} />
-        <Route path="/peliculaspopulares" component={PeliculasPopulares} />
-        <Route path="/peliculascartelera" component={PeliculasCartelera} />
+        <Route path="/peliculasPopulares" component={PeliculasPopulares} />
+        <Route path="/peliculasCartelera" component={PeliculasCartelera} />
+        <Route path="/seriesPopulares" component={SeriesPopulares} />
+        <Route path="/seriesCartelera" component={SeriesCartelera} />
         <Route component={Error} />
       </Switch>
 
