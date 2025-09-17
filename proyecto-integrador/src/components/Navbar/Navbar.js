@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 import './navbar.css';
 
 function Navbar(){
@@ -14,10 +15,26 @@ function Navbar(){
       {/* Contenedor de links + buscador */}
       <div className="nav">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/peliculaspopulares">Películas populares</a></li>
-          <li><a href="/peliculascartelera">Películas en cartelera</a></li>
-          <li><a href="/favoritos">Favoritas</a></li>
+          <li>
+            <NavLink to="/">
+            Home
+            </NavLink>
+            </li>
+          <li>
+          <NavLink to="/peliculas">
+            Películas
+            </NavLink> 
+            </li>
+          <li>
+          <NavLink to="/series">
+            Series
+            </NavLink>
+            </li>
+          <li>
+          <NavLink to="/favoritos">
+            Favoritos
+            </NavLink>
+            </li>
         </ul>
 
         <form className="search-form" action="results.html" method="get">
