@@ -84,6 +84,56 @@ nav {
     width: 15%;
 }
 
+.peliculas-populares {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;  
+}
+
+.single-card-movie {
+  flex: 0 0 300px;               
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-card-movie:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+.cardBody {
+  padding: 12px ;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 18px; 
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.card-text {
+  margin: 0;
+  color: #444;
+  overflow: hidden;
+}
+
+.btn {
+  text-decoration: none;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: auto;    
+}
+
 @media(min-width: 765px){
     nav {
         grid-template-columns: 4fr 3fr;

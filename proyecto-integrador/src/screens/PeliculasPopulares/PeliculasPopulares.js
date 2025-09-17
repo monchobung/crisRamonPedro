@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import './styles.css'
+import PeliculaCard from "../../components/PeliculaCard/PeliculaCard";
+
 
 class PeliculasPopulares extends Component{
     constructor(props){
@@ -22,14 +24,17 @@ class PeliculasPopulares extends Component{
         })
     }
 
-    render(){
-        
-        return(
-            <React.Fragment>
-              
-            </React.Fragment>
-        )
-    }
+    render() {
+    return (
+      <React.Fragment>
+        <div className="peliculas-populares">
+          {this.state.populares.map((elm, idx) => (
+            <PeliculaCard data={elm} key={idx + elm.id} />
+          ))}
+        </div>
+      </React.Fragment>
+    );
+  }
        
 }
 
