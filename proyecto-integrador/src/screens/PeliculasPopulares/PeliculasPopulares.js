@@ -25,8 +25,10 @@ class PeliculasPopulares extends Component{
     }
 
     render() {
+      console.log(this.state.populares)
     return (
       <React.Fragment>
+        <h2>Peliculas Populares</h2>
         <div className="peliculas-populares">
           {this.state.populares.map((elm, idx) => (
             <PeliculaCard data={elm} key={idx + elm.id} />
