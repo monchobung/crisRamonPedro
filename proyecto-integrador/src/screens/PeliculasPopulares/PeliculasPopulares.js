@@ -8,7 +8,9 @@ class PeliculasPopulares extends Component{
         super(props);
         this.state = {
             populares: [],
-            loading: true
+            loading: true,
+            filtadoValue: '',
+            peliculasFiltradas: [],
         }
     }
 
@@ -23,7 +25,7 @@ class PeliculasPopulares extends Component{
         fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
         .then((response) => response.json())
         .then((data) =>{
-            this.setState({populares: data.results, loading: false})
+            this.setState({populares: data.results, loading: false, peliculasFiltradas: data.results})
         })
         .catch((error) =>{
             console.log('Error');
@@ -31,15 +33,37 @@ class PeliculasPopulares extends Component{
         })
     }
 
+    evitarSubmit(event){
+        event.preventDefault()
+    }
+
+    controlarCambios(event){
+        this.setState({filtadoValue: event.target.value}, ()=> this.filtarPeliculas(this.state.filtadoValue)
+        )
+    }
+
+    filtarPeliculas(texto){
+        let nuevoArray = this.state.populares.filter(elemento => {
+          return  elemento.original_title.toLowerCase().includes(texto.toLowerCase())
+        })
+
+        this.setState({
+            peliculasFiltradas: nuevoArray
+        })
+        console.log(this.state.peliculasFiltradas);
+        
+    }
+
     render() {
       console.log(this.state.populares)
     return (
       <React.Fragment>
         <h2>Peliculas Populares</h2>
+        <form onSubmit={(event) => event.preventDefault()}>
+            <input type="text" placeholder="Filtrar peliculas" value={this.state.filtadoValue} onChange={(event) => this.controlarCambios(event)}/>
+        </form>
         <div className="peliculas-populares">
-          {this.state.populares.map((elm, idx) => (
-            <PeliculaCard data={elm} key={idx + elm.id} />
-          ))}
+          {this.state.peliculasFiltradas.map((elm, idx) => (<PeliculaCard data={elm} key={idx + elm.id} />))}
         </div>
       </React.Fragment>
     );
