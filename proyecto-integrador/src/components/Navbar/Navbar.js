@@ -22,7 +22,7 @@ function Navbar(){
             </li>
           <li>
           <NavLink to="/peliculasCartelera">
-            Películas en Cartelera
+            Películas Cartelera
             </NavLink> 
             </li>
           <li>
@@ -31,8 +31,8 @@ function Navbar(){
             </NavLink>
             </li>
             <li>
-            <NavLink to="/seriesCartelera">
-            Series en Cartelera
+            <NavLink to="/seriesHoy">
+            Series Hoy
             </NavLink> 
             </li>
           <li>

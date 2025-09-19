@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import SerieCard from "../../components/SerieCard/SerieCard";
+import './SeriesHoy.css'
 
-class SeriesCartelera extends Component{
+class SeriesHoy extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -27,7 +28,8 @@ class SeriesCartelera extends Component{
         
         return(
             <React.Fragment>
-                <div className="series-cartelera">
+                <h2>Series Transmitidas Hoy</h2>
+                <div className="series-hoy">
           {this.state.cartelera.map((elm, idx) => (
             <SerieCard data={elm} key={idx + elm.id} />
           ))}
@@ -38,4 +40,4 @@ class SeriesCartelera extends Component{
        
 }
 
-export default SeriesCartelera;
+export default SeriesHoy;
