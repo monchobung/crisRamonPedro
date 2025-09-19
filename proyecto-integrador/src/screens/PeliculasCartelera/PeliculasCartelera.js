@@ -63,9 +63,12 @@ class PeliculasCartelera extends Component{
             <input type="text" placeholder="Filtrar peliculas" value={this.state.filtadoValue} onChange={(event) => this.controlarCambios(event)}/>
             </form>
             <div className="peliculas-cartelera">
-            {this.state.peliculasFiltradas.map((elm, idx) => (
+            {this.state.loading ? (
+                <p className="loading">Cargando...</p>
+         ) : (
+            (this.state.peliculasFiltradas.map((elm, idx) => (
             <PeliculaCard data={elm} key={idx + elm.id} />
-          ))}
+          ))))}
         </div> 
             </React.Fragment>
         )
