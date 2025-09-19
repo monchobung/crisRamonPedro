@@ -1,5 +1,6 @@
 import React from "react"
 import { Component } from "react";
+import { Link } from 'react-router-dom'
 import "./styles.css"
 import PeliculaCard from "../../components/PeliculaCard/PeliculaCard";
 
@@ -9,6 +10,7 @@ class Home extends Component {
     constructor (props){
         super(props)
         this.state={
+            populares: [],
             datos: [],
             loading: true
         }
@@ -27,7 +29,8 @@ class Home extends Component {
         .then((response) => response.json())
         .then((data) =>{
             console.log(data)
-            this.setState({populares: data.results, loading: false})
+            let peliculasReducidas = data.results.filter((nuevas, i) => i < 4)
+            this.setState({populares: peliculasReducidas, loading: false})
         })
         .catch((error) =>{
             console.log('Error' + error);
@@ -49,8 +52,13 @@ class Home extends Component {
     return(
         <React.Fragment>
         <h1>Bienvenidos a Cinetic</h1>
+        <div>
         <h2 className="alert alert-primary">Popular movies this week</h2>
-            <section className="row cards" id="movies"> 
+        <Link to="/peliculasPopulares">Ver Todas</Link>
+        </div>
+            <section className="row cards" id="movies">
+                {this.state.populares.map((elm, idx) => 
+                    (<PeliculaCard data={elm} key={idx + elm.id} />))} 
             </section>
         <h2 className="alert alert-primary">Movies now playing</h2>
             <section className="row cards" id="now-playing">
