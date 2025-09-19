@@ -75,11 +75,13 @@ class Home extends Component {
                     (<PeliculaCard data={elm} key={idx + elm.id} />))} 
             </section>
         <h2 className="alert alert-primary">Movies now playing</h2>
+        <Link to="/peliculasCartelera">Ver Todas</Link>
             <section className="row cards" id="now-playing">
                 {this.state.cartelera.map((elm, idx) => 
                     (<PeliculaCard data={elm} key={idx + elm.id} />))} 
             </section>
         <h2 className="alert alert-warning">Popular TV shows this week</h2>
+        <Link to="/seriesPopulares">Ver Todas</Link>
             <section className="row cards" id="tv-show">
                 {this.state.seriesPopulares.map((elm, idx) => 
                     (<PeliculaCard data={elm} key={idx + elm.id} />))}
