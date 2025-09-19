@@ -11,6 +11,8 @@ class Home extends Component {
         super(props)
         this.state={
             populares: [],
+            cartelera: [],
+            seriesPopulares: [],
             datos: [],
             loading: true
         }
@@ -40,7 +42,19 @@ class Home extends Component {
         .then((response) => response.json())
         .then((data) =>{
             console.log(data)
-            this.setState({cartelera: data.results, loading: false})
+            let nowPlayingReducidas = data.results.filter((nuevas, i) => i < 4)
+            this.setState({cartelera: nowPlayingReducidas, loading: false})
+        })
+        .catch((error) =>{
+            console.log('Error');
+            this.setState({ loading: false})
+        })
+        fetch('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1', options)
+        .then((response) => response.json())
+        .then((data) =>{
+            console.log(data)
+            let seriesPopuReducidas = data.results.filter((nuevas, i) => i < 4)
+            this.setState({seriesPopulares: seriesPopuReducidas, loading: false})
         })
         .catch((error) =>{
             console.log('Error');
@@ -62,9 +76,13 @@ class Home extends Component {
             </section>
         <h2 className="alert alert-primary">Movies now playing</h2>
             <section className="row cards" id="now-playing">
+                {this.state.cartelera.map((elm, idx) => 
+                    (<PeliculaCard data={elm} key={idx + elm.id} />))} 
             </section>
         <h2 className="alert alert-warning">Popular TV shows this week</h2>
             <section className="row cards" id="tv-show">
+                {this.state.seriesPopulares.map((elm, idx) => 
+                    (<PeliculaCard data={elm} key={idx + elm.id} />))}
             </section>
         <h2 className="alert alert-warning">TV shows airing today</h2>
         <section className="row cards" id="on-air-today">
