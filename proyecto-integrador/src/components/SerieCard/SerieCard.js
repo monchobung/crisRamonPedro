@@ -9,7 +9,7 @@ function SerieCard(props){
       <img className="col-md-6" src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt="Imagen"/>
         <h5 className="card-title">{data.original_name}</h5>
         <p className="card-text">{data.overview}</p>
-        <a className="btn btn-primary" href={"/detalle"}>Ver más</a> {/* por ahora no funca el link*/}
+        <a className="btn btn-primary" href={`/detalle/series/${data.id}`}>Ver más</a> {/* por ahora no funca el link*/}
       </div>
     </article>
   );

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./screens/Home/Home";
 import Detalle from "./screens/Detalle/Detalle";
+import DetalleS from "./screens/DetalleS/DetalleS";
 import Favoritos from "./screens/Favoritos/Favoritos";
 import Series from "./screens/Series/Series";
 import Peliculas from "./screens/Peliculas/Peliculas";
@@ -20,6 +21,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/detalle/pelicula/:id" component={Detalle} />
+        <Route path="/detalle/series/:id" component={DetalleS} />
         <Route path="/favoritos" component={Favoritos} />
         <Route path="/peliculas" component={Peliculas} />
         <Route path="/series" component={Series} />
