@@ -11,12 +11,11 @@ class PeliculasPopulares extends Component{
             loading: true,
             filtadoValue: '',
             peliculasFiltradas: [],
-            page: 0
+            page: 1
         }
     }
 
     componentDidMount(){
-      const siguientePagina = this.state.page + 1
       const options = {
         method: 'GET',
         headers: {
@@ -24,7 +23,7 @@ class PeliculasPopulares extends Component{
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0Y2RhZWQzNGYwODcwOTNkMzA0NmU0MWI0M2MwOGRkYiIsIm5iZiI6MTc1NzY5NDU3MS44NjcsInN1YiI6IjY4YzQ0YTZiYzk1NzIxYzg4YWNkNTAwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4rp3hL4-IiU2FdzR0ITBAPwKfKFxhL4lXd-X6MzdlwQ'
         }
       };
-        fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${siguientePagina}`, options)
+        fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`, options)
         .then((response) => response.json())
         .then((data) =>{
             this.setState({populares: data.results, loading: false, peliculasFiltradas: data.results, page: data.page})
@@ -36,9 +35,17 @@ class PeliculasPopulares extends Component{
     }
 
     cargarMas(){
-      fetch(this.state.page)
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0Y2RhZWQzNGYwODcwOTNkMzA0NmU0MWI0M2MwOGRkYiIsIm5iZiI6MTc1NzY5NDU3MS44NjcsInN1YiI6IjY4YzQ0YTZiYzk1NzIxYzg4YWNkNTAwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4rp3hL4-IiU2FdzR0ITBAPwKfKFxhL4lXd-X6MzdlwQ'
+        }
+      };
+      let siguientePagina = this.state.page + 1
+      fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${siguientePagina}`, options)
       .then(response => response.json())
-      .then(data => this.setState({datos:this.state.datos.concat(data.results), page:data.page})
+      .then(data => this.setState({peliculasFiltradas:this.state.peliculasFiltradas.concat(data.results), page: data.page})
      )}
 
     evitarSubmit(event){
