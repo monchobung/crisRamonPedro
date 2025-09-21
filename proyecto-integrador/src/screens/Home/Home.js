@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import "./styles.css"
 import PeliculaCard from "../../components/PeliculaCard/PeliculaCard";
 import Buscador from "../../components/Buscador/Buscador";
+import SerieCard from "../../components/SerieCard/SerieCard";
+
 
 
 
@@ -14,6 +16,7 @@ class Home extends Component {
             populares: [],
             cartelera: [],
             seriesPopulares: [],
+            seriesAiring: [],
             datos: [],
             loading: true
         }
@@ -61,6 +64,18 @@ class Home extends Component {
             console.log('Error');
             this.setState({ loading: false})
         })
+        fetch('https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1', options)
+        .then((response) => response.json())
+        .then((data) => {
+            let airingReducidas = data.results.filter((nuevas, i) => i < 4);
+            this.setState({ seriesAiring: airingReducidas, loading: false });
+        })
+        .catch((error) => {
+        console.log('Error');
+        this.setState({ loading: false });
+        });
+
+        
     }
 
     render(){
@@ -86,10 +101,14 @@ class Home extends Component {
         <Link to="/seriesPopulares">Ver Todas</Link>
             <section className="row cards" id="tv-show">
                 {this.state.seriesPopulares.map((elm, idx) => 
-                    (<PeliculaCard data={elm} key={idx + elm.id} />))}
+                    (<SerieCard data={elm} key={idx + elm.id} />))}
             </section>
         <h2 className="alert alert-warning">TV shows airing today</h2>
+        <Link to="/seriesCartelera">Ver Todas</Link>
         <section className="row cards" id="on-air-today">
+            {this.state.seriesAiring.map((elm, idx) => (
+                <SerieCard data={elm} key={idx + elm.id} />
+  ))}
         </section>
         </React.Fragment>
     )

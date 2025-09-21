@@ -40,7 +40,7 @@ class PeliculaCard extends Component {
         </div>
         <Link className="btn btn-primary" to={`/detalle/pelicula/${this.props.data.id}`}>
           Ir a detalle
-        </Link> {/* por ahora no funca el link*/}
+        </Link> 
       </div>
     </article>
   );
