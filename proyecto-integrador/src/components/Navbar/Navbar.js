@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './navbar.css';
 import Buscador from '../Buscador/Buscador'
 
@@ -17,34 +17,34 @@ function Navbar(){
       <div className="nav">
         <ul>
           <li>
-            <NavLink to="/">
+            <Link to="/">
             Home
-            </NavLink>
+            </Link>
             </li>
           <li>
-          <NavLink to="/peliculasCartelera">
+          <Link to="/peliculasCartelera">
             Películas Cartelera
-            </NavLink> 
+            </Link> 
             </li>
           <li>
-          <NavLink to="/peliculasPopulares">
+          <Link to="/peliculasPopulares">
             Peliculas Populares
-            </NavLink>
+            </Link>
             </li>
             <li>
-            <NavLink to="/seriesHoy">
+            <Link to="/seriesHoy">
             Series Hoy
-            </NavLink> 
+            </Link> 
             </li>
           <li>
-          <NavLink to="/seriesPopulares">
+          <Link to="/seriesPopulares">
             Series Populares
-            </NavLink>
+            </Link>
             </li>
           <li>
-          <NavLink to="/favoritos">
+          <Link to="/favoritos">
             Favoritos
-            </NavLink>
+            </Link>
             </li>
         </ul>
 
