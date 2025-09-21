@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import './styles.css'
 import PeliculaCard from "../../components/PeliculaCard/PeliculaCard";
 
-
 class PeliculasPopulares extends Component{
     constructor(props){
         super(props);
@@ -66,7 +65,7 @@ class PeliculasPopulares extends Component{
             peliculasFiltradas: nuevoArray
         })
         console.log(this.state.peliculasFiltradas);
-        
+
     }
 
     render() {
@@ -84,7 +83,7 @@ class PeliculasPopulares extends Component{
       </React.Fragment>
     );
   }
-       
+
 }
 
 export default PeliculasPopulares;

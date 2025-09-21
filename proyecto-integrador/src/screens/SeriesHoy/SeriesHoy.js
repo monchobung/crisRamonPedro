@@ -7,7 +7,8 @@ class SeriesHoy extends Component{
         super(props);
         this.state = {
             cartelera: [],
-            loading: true
+            loading: true,
+            pagina: 1
         }
     }
 
@@ -15,13 +16,24 @@ class SeriesHoy extends Component{
         fetch('https://api.themoviedb.org/3/tv/airing_today?api_key=4cdaed34f087093d3046e41b43c08ddb')
         .then((response) => response.json())
         .then((data) =>{
-            this.setState({cartelera: data.results, loading: false})
+            this.setState({cartelera: data.results, loading: false, pagina: data.page})
         })
         .catch((error) =>{
             console.log('Error');
             this.setState({ loading: false})
         })
     }
+
+    cargarMas(){
+    let siguientePagina = this.state.pagina + 1
+    fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=4cdaed34f087093d3046e41b43c08ddb&page=${siguientePagina}`)
+    .then(response => response.json())
+    .then(data => this.setState({
+        cartelera: this.state.cartelera.concat(data.results), 
+        pagina: data.page
+    }))
+    .catch(error => console.log('Error', error))
+}
 
     render(){
         
@@ -33,7 +45,8 @@ class SeriesHoy extends Component{
           {this.state.cartelera.map((elm, idx) => (
             <SerieCard data={elm} key={idx + elm.id} />
           ))}
-        </div> 
+        </div>
+        <button onClick={()=> this.cargarMas()}><p>Mas Series</p></button>
             </React.Fragment>
         )
     }

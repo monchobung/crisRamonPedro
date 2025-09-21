@@ -10,6 +10,7 @@ class PeliculasCartelera extends Component{
             loading: true,
             filtadoValue: '',
             peliculasFiltradas: [],
+            pagina: 1
         }
     }
 
@@ -24,13 +25,27 @@ class PeliculasCartelera extends Component{
         fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
         .then((response) => response.json())
         .then((data) =>{
-            this.setState({cartelera: data.results, loading: false, peliculasFiltradas: data.results})
+            this.setState({cartelera: data.results, loading: false, peliculasFiltradas: data.results, pagina: data.page})
         })
         .catch((error) =>{
             console.log('Error');
             this.setState({ loading: false})
         })
     }
+
+    cargarMas(){
+        const options = {
+            method: 'GET',
+            headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0Y2RhZWQzNGYwODcwOTNkMzA0NmU0MWI0M2MwOGRkYiIsIm5iZiI6MTc1NzY5NDU3MS44NjcsInN1YiI6IjY4YzQ0YTZiYzk1NzIxYzg4YWNkNTAwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4rp3hL4-IiU2FdzR0ITBAPwKfKFxhL4lXd-X6MzdlwQ'
+    }
+    };
+    let siguientePagina = this.state.pagina + 1
+  fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${siguientePagina}`, options)
+  .then(response => response.json())
+  .then(data => this.setState({peliculasFiltradas:this.state.peliculasFiltradas.concat(data.results), pagina: data.page})
+ )}
 
     evitarSubmit(event){
         event.preventDefault()
@@ -64,12 +79,12 @@ class PeliculasCartelera extends Component{
             </form>
             <div className="peliculas-cartelera">
             {this.state.loading ? (
-                <p className="loading">Cargando...</p>
-         ) : (
+                <p className="loading">Cargando...</p>) : (
             (this.state.peliculasFiltradas.map((elm, idx) => (
             <PeliculaCard data={elm} key={idx + elm.id} />
-          ))))}
-        </div> 
+            ))))}
+            </div> 
+            <button onClick={()=> this.cargarMas()}><p>Mas Peliculas</p></button>
             </React.Fragment>
         )
     }
