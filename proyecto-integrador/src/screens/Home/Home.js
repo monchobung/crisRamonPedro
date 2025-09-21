@@ -3,7 +3,6 @@ import { Component } from "react";
 import { Link } from 'react-router-dom'
 import "./styles.css"
 import PeliculaCard from "../../components/PeliculaCard/PeliculaCard";
-import Buscador from "../../components/Buscador/Buscador";
 import SerieCard from "../../components/SerieCard/SerieCard";
 
 
@@ -82,7 +81,6 @@ class Home extends Component {
     return(
         <React.Fragment>
         <h1>Bienvenidos a Cinetic</h1>
-        <Buscador/>
         <div>
         <h2 className="alert alert-primary">Popular movies this week</h2>
         <Link to="/peliculasPopulares">Ver Todas</Link>

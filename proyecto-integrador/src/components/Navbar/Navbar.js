@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import './navbar.css';
+import Buscador from '../Buscador/Buscador'
 
 function Navbar(){
   return (
@@ -47,10 +48,7 @@ function Navbar(){
             </li>
         </ul>
 
-        <form className="search-form" action="results.html" method="get">
-          <input type="text" name="searchData" placeholder="Buscar..." />
-          <button type="submit" className="btn-sm">Buscar</button>
-        </form>
+        <Buscador/>
       </div>
     </nav>
   );
