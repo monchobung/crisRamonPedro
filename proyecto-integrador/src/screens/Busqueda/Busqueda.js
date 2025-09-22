@@ -47,7 +47,9 @@ class Busqueda extends Component {
   render(){
     let tipo = this.props.match.params.tipo
     if(tipo === 'movie') {
-        return(<React.Fragment>
+        return(
+          this.state.loading ? <h3>Cargando...</h3> :
+        <React.Fragment>
             <h2>Resultados de Busqueda</h2>
             <div className="resultado-busqueda">
           {this.state.data.map((elm, idx) => (<PeliculaCard data={elm} key={idx + elm.id} />))}
@@ -55,6 +57,7 @@ class Busqueda extends Component {
             </React.Fragment>)
     } else if (tipo === 'tv') {
         return(
+          this.state.loading ? <h3>Cargando...</h3> :
             <React.Fragment>
             <h2>Resultados de Busqueda</h2>
             <div className="resultado-busqueda">

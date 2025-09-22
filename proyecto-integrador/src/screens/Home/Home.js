@@ -79,6 +79,7 @@ class Home extends Component {
 
     render(){
     return(
+        this.state.loading ? <h3>Cargando...</h3> :
         <React.Fragment>
         <h1>Bienvenidos a Cinetic</h1>
         <div>

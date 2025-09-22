@@ -77,9 +77,9 @@ class SeriesPopulares extends Component {
   }
 
   render() {
-    if (this.state.loading) return <h3>Cargando...</h3>;
 
     return (
+      this.state.loading ? <h3>Cargando...</h3> :
       <React.Fragment>
         <h2>Series Populares</h2>
 

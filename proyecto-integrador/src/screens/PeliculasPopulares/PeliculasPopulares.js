@@ -71,6 +71,7 @@ class PeliculasPopulares extends Component{
     render() {
       console.log(this.state.populares)
     return (
+      this.state.loading ? <h3>Cargando...</h3> :
       <React.Fragment>
         <h2>Peliculas Populares</h2>
         <form onSubmit={(event) => event.preventDefault()}>

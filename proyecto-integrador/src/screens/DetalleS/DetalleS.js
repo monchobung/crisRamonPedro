@@ -30,11 +30,8 @@ class DetalleS extends Component {
   }
 
   render(){
-    if (this.state.loading) {
-      return <p>Cargando…</p>;
-    }
-
     return (
+      this.state.loading ? <h3>Cargando...</h3> :
       <article className="detalle">
         <h2>{this.state.item.original_name}</h2>
         <img src={`https://image.tmdb.org/t/p/w500${this.state.item.poster_path}`} alt='imagen' />
