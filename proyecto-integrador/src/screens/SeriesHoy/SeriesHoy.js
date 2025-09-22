@@ -33,8 +33,25 @@ class SeriesHoy extends Component {
       });
   }
 
+  cargarMas() {
+    const siguientePagina = this.state.pagina + 1;
+    fetch(
+      `https://api.themoviedb.org/3/tv/airing_today?api_key=4cdaed34f087093d3046e41b43c08ddb&page=${siguientePagina}`
+    )
+      .then((response) => response.json())
+      .then((data) =>
+        this.setState({
+          seriesFiltradas: this.state.seriesFiltradas.concat(data.results),
+          pagina: data.page,
+        })
+      )
+      .catch((error) => console.log("Error", error));
+  }
+
   controlarCambios(event) {
-    this.setState({ filtadoValue: event.target.value },() => this.filtarSeries(this.state.filtadoValue)
+    this.setState(
+      { filtadoValue: event.target.value },
+      () => this.filtarSeries(this.state.filtadoValue)
     );
   }
 
@@ -57,15 +74,16 @@ class SeriesHoy extends Component {
             type="text"
             placeholder="Filtrar series"
             value={this.state.filtadoValue}
-            onChange={(event) => this.controlarCambios(event)}
-          />
+            onChange={(event) => this.controlarCambios(event)}/>
         </form>
 
         <div className="series-hoy">
-          {this.state.seriesFiltradas.map((elm, idx) => (
-            <SerieCard data={elm} key={idx + elm.id} />
-          ))}
+          {this.state.seriesFiltradas.map((elm, idx) => ( <SerieCard data={elm} key={idx + elm.id} />))}
         </div>
+
+        <button onClick={() => this.cargarMas()}>
+          <p>Mas Series</p>
+        </button>
       </React.Fragment>
     );
   }
