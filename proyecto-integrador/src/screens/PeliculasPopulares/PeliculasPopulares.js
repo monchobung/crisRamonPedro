@@ -58,7 +58,7 @@ class PeliculasPopulares extends Component{
 
     filtarPeliculas(texto){
         let nuevoArray = this.state.populares.filter(elemento => {
-          return  elemento.original_title.toLowerCase().includes(texto.toLowerCase())
+          return  elemento.original_name.toLowerCase().includes(texto.toLowerCase())
         })
 
         this.setState({
