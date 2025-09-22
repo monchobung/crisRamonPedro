@@ -34,7 +34,7 @@ class PeliculaCard extends Component {
       <div className="cardBody">
       <img className="col-md-6" src={`https://image.tmdb.org/t/p/w500${this.props.data.poster_path}`} alt="Imagen"/>
         <h5 className="card-title">{this.props.data.title}</h5>
-        <div clasName="descripcion">
+        <div className="descripcion">
         {this.state.vermas===true ? <div><p className="card-text">{this.props.data.overview}</p></div>: ""}
         <button onClick={()=> this.botonvermas()}>{this.state.textoboton}</button> 
         </div>

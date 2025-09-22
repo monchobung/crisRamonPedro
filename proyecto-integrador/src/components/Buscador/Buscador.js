@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Buscador.css'; 
-
+import { withRouter } from 'react-router-dom'
 
 class Buscador extends Component {
     constructor (props){
@@ -15,7 +15,7 @@ class Buscador extends Component {
 
 ejecutarBusqueda(event){
     event.preventDefault();
-    this.props.history.push("/buscar/" + this.state.tipo + "/" + this.state.valor)
+    this.props.history.push("/search/" + this.state.tipo + "/" + this.state.valor)
 }
 
 controlarCambios(event){
@@ -24,23 +24,11 @@ controlarCambios(event){
 
 cambiarTipo(event){
     const value = event.target.value;
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0Y2RhZWQzNGYwODcwOTNkMzA0NmU0MWI0M2MwOGRkYiIsIm5iZiI6MTc1NzY5NDU3MS44NjcsInN1YiI6IjY4YzQ0YTZiYzk1NzIxYzg4YWNkNTAwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4rp3hL4-IiU2FdzR0ITBAPwKfKFxhL4lXd-X6MzdlwQ'
-        }
-      };
-      let query = this.state.valor
     if (value === 'movie') {
-        fetch(`https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${query}`, options)
-        .then(response => response.json())
-        .then(data => this.setState({tipo: 'movie'}, ()=> console.log(this.state.tipo)))
+        this.setState({tipo: 'movie'}, ()=> console.log(this.state.tipo))
         
     } else if (value === 'tv'){
-        fetch(`https://api.themoviedb.org/3/search/tv?include_adult=false&language=en-US&page=1&query=${query}`, options)
-        .then(response => response.json())
-        .then(data => this.setState({tipo: 'tv'}, ()=> console.log(this.state.tipo)))
+        this.setState({tipo: 'tv'}, ()=> console.log(this.state.tipo))
     }
 }
 
@@ -49,7 +37,7 @@ cambiarTipo(event){
     <React.Fragment>
       <form className="search-form" onSubmit={(event)=> this.ejecutarBusqueda(event)}>
         <label>Name:</label>
-        <input type="text" name="searchData" placeholder="Buscar..." onChange={(event)=> this.controlarCambios(event)} value={this.state.valor}/>
+        <input type="text" name="searchData" placeholder="Buscar..." onChange={(event)=> this.controlarCambios(event)} value={this.state.valor}/> 
         <label>Movie</label>
         <input className="" value="movie" type="radio" name="tipo" onChange={(event)=> this.cambiarTipo(event)} defaultChecked/>
         <label>Tv Series</label>
@@ -59,4 +47,4 @@ cambiarTipo(event){
   </React.Fragment>
 )}}
 
-export default Buscador
+export default withRouter(Buscador)
