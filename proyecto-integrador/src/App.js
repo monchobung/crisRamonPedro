@@ -10,7 +10,7 @@ import SeriesHoy from "./screens/SeriesHoy/SeriesHoy";
 import Error from "./screens/Error/Error";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import Buscador from "./components/Buscador/Buscador"
+import Busqueda from "./screens/Busqueda/Busqueda"
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
 
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/buscar/:valor/:tipo" component={Buscador}/>
+        <Route path="/buscar/:valor/:tipo" component={Busqueda}/>
         <Route path="/detalle/pelicula/:id" component={Detalle} />
         <Route path="/detalle/series/:id" component={DetalleS} />
         <Route path="/favoritos" component={Favoritos} />
