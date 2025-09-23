@@ -1,0 +1,19 @@
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.grilla-peliculas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+.grilla-series {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}

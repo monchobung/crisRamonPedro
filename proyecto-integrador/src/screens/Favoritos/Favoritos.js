@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PeliculaCard from '../../components/PeliculaCard/PeliculaCard';
 import SerieCard from '../../components/SerieCard/SerieCard';
+import "./styles.css"
 
 export default class Favoritos extends Component {
   constructor(props) {
@@ -73,6 +74,7 @@ export default class Favoritos extends Component {
     return (
       <div>
         <h2>Películas favoritas</h2>
+        <div className='grilla-peliculas'>
         {
           this.state.peliculasFav.length > 0 ?
             this.state.peliculasFav.map((elm, idx) =>
@@ -88,8 +90,10 @@ export default class Favoritos extends Component {
               :
               <h3>Cargando películas...</h3>
         }
+        </div>
 
         <h2>Series favoritas</h2>
+        <div className='grilla-peliculas'>
         {
           this.state.seriesFav.length > 0 ?
             this.state.seriesFav.map((elm, idx) =>
@@ -105,6 +109,7 @@ export default class Favoritos extends Component {
               :
               <h3>Cargando series...</h3>
         }
+        </div>
       </div>
     );
   }
