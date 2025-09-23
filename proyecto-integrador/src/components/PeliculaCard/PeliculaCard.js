@@ -7,10 +7,70 @@ class PeliculaCard extends Component {
     super(props)
     this.state={
       vermas:false,
-      textoboton: "ver mas"
+      textoboton: "ver mas",
+      data:[],
+      favorito: false
     }
   }
-  
+  componentDidMount() {
+    const id = this.props.data.id;
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0Y2RhZWQzNGYwODcwOTNkMzA0NmU0MWI0M2MwOGRkYiIsIm5iZiI6MTc1NzY5NDU3MS44NjcsInN1YiI6IjY4YzQ0YTZiYzk1NzIxYzg4YWNkNTAwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4rp3hL4-IiU2FdzR0ITBAPwKfKFxhL4lXd-X6MzdlwQ'
+      }
+    };
+
+    fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
+      .then(res => res.json())
+      .then(pelicula => {
+        this.setState({ data: pelicula });
+
+      
+        const storage = localStorage.getItem('favoritos');
+        if (storage !== null) {
+          let storageParseado = JSON.parse(storage);
+          for (let i = 0; i < storageParseado.length; i++) {
+            if (storageParseado[i] === pelicula.id) {
+             this.setState({ favorito: true });
+           }
+         }
+       }
+    })
+    .catch(err => console.error(err));
+  }
+
+  agregarAFavoritos(id) {
+    let storage = localStorage.getItem('favoritos');
+    if (storage !== null) {
+      let arrParseado = JSON.parse(storage);
+      arrParseado.push(id);
+      let arrStringificado = JSON.stringify(arrParseado);
+      localStorage.setItem('favoritos', arrStringificado);
+    } else {
+      let primerID = [id];
+      let arrStringificado = JSON.stringify(primerID);
+      localStorage.setItem('favoritos', arrStringificado);
+    }
+
+    this.setState({
+      favorito: true
+    });
+  }
+  sacarDeFavoritos(id) {
+    const storage = localStorage.getItem('favoritos');
+    const storageParseado = JSON.parse(storage);
+    const filtrarStorage = storageParseado.filter(elm => elm !== id);
+    const storageStringificado = JSON.stringify(filtrarStorage);
+    localStorage.setItem('favoritos', storageStringificado);
+    this.setState({
+      favorito: false
+    })
+  }
+
+
   botonvermas(){
     if (this.state.vermas === false){
       this.setState({
@@ -32,7 +92,7 @@ class PeliculaCard extends Component {
   return (
     <article className="single-card-movie">
       <div className="cardBody">
-      <img className="col-md-6" src={`https://image.tmdb.org/t/p/w500${this.props.data.poster_path}`} alt="Imagen"/>
+        <img className="col-md-6" src={`https://image.tmdb.org/t/p/w500${this.props.data.poster_path}`} alt="Imagen"/>
         <h5 className="card-title">{this.props.data.title}</h5>
         <div className="descripcion">
         {this.state.vermas===true ? <div><p className="card-text">{this.props.data.overview}</p></div>: ""}
@@ -41,6 +101,20 @@ class PeliculaCard extends Component {
         <Link className="btn btn-primary" to={`/detalle/pelicula/${this.props.data.id}`}>
           Ir a detalle
         </Link> 
+        {
+          this.state.favorito ? (
+            <button onClick={() => this.sacarDeFavoritos(this.state.data.id)}>
+            Quitar de favoritos
+            </button>
+          ) : (
+              <button onClick={() => this.agregarAFavoritos(this.state.data.id)}>
+                Agregar a favoritos
+              </button>
+            )
+        }
+
+        
+        
       </div>
     </article>
   );

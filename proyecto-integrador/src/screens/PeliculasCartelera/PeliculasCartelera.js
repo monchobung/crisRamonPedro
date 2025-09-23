@@ -78,7 +78,7 @@ class PeliculasCartelera extends Component{
             <form onSubmit={(event) => event.preventDefault()}>
             <input type="text" placeholder="Filtrar peliculas" value={this.state.filtadoValue} onChange={(event) => this.controlarCambios(event)}/>
             </form>
-            <div className="peliculas-cartelera">(
+            <div className="peliculas-cartelera">
             {this.state.peliculasFiltradas.map((elm, idx) => (
             <PeliculaCard data={elm} key={idx + elm.id} />
             ))}
