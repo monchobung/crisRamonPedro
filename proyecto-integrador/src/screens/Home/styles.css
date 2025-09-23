@@ -1,0 +1,18 @@
+*{
+    text-decoration: none;
+    color: black;
+}
+.tituloP {
+    text-align: center;
+}
+
+h2{
+    margin-left: 40px;
+}
+
+.section-header {
+    display: inline-flex;
+    align-items: baseline;       
+    gap:10px;
+
+}

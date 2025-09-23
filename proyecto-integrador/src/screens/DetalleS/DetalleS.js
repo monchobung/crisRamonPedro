@@ -33,7 +33,9 @@ class DetalleS extends Component {
     return (
       this.state.loading ? <h3>Cargando...</h3> :
       <article className="detalle">
+        <div className="tituloS">
         <h2>{this.state.item.original_name}</h2>
+        </div>
         <img src={`https://image.tmdb.org/t/p/w500${this.state.item.poster_path}`} alt='imagen' />
         <p>Calificación: {this.state.item.vote_average}</p>
         <p>Fecha de estreno: {this.state.item.first_air_date}</p>

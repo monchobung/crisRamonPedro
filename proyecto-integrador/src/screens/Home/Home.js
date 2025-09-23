@@ -81,8 +81,10 @@ class Home extends Component {
     return(
         this.state.loading ? <h3>Cargando...</h3> :
         <React.Fragment>
+            <div className="tituloP">
         <h1>Bienvenidos a Cinetic</h1>
-        <div>
+        </div>
+        <div className="section-header">
         <h2 className="alert alert-primary">Popular movies this week</h2>
         <Link to="/peliculasPopulares">Ver Todas</Link>
         </div>
@@ -90,20 +92,26 @@ class Home extends Component {
                 {this.state.populares.map((elm, idx) => 
                     (<PeliculaCard data={elm} key={idx + elm.id} />))} 
             </section>
+            <div className="section-header">
         <h2 className="alert alert-primary">Movies now playing</h2>
         <Link to="/peliculasCartelera">Ver Todas</Link>
+        </div>
             <section className="row cards" id="now-playing">
                 {this.state.cartelera.map((elm, idx) => 
                     (<PeliculaCard data={elm} key={idx + elm.id} />))} 
             </section>
+            <div className="section-header">
         <h2 className="alert alert-warning">Popular TV shows this week</h2>
         <Link to="/seriesPopulares">Ver Todas</Link>
+        </div>
             <section className="row cards" id="tv-show">
                 {this.state.seriesPopulares.map((elm, idx) => 
                     (<SerieCard data={elm} key={idx + elm.id} />))}
             </section>
+            <div className="section-header">
         <h2 className="alert alert-warning">TV shows airing today</h2>
         <Link to="/seriesCartelera">Ver Todas</Link>
+        </div>
         <section className="row cards" id="on-air-today">
             {this.state.seriesAiring.map((elm, idx) => (
                 <SerieCard data={elm} key={idx + elm.id} />

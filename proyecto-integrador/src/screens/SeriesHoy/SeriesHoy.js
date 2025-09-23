@@ -66,8 +66,10 @@ class SeriesHoy extends Component {
     return (
       this.state.loading ? <h3>Cargando...</h3> :
       <React.Fragment>
+        <div className="tituloP">
         <h2>Series Transmitidas Hoy</h2>
-
+        </div>
+        <div className="filtrado">
         <form onSubmit={(event) => event.preventDefault()}>
           <input
             type="text"
@@ -75,7 +77,7 @@ class SeriesHoy extends Component {
             value={this.state.filtadoValue}
             onChange={(event) => this.controlarCambios(event)}/>
         </form>
-
+        </div>
         <div className="series-hoy">
           {this.state.seriesFiltradas.map((elm, idx) => ( <SerieCard data={elm} key={idx + elm.id} />))}
         </div>

@@ -85,11 +85,11 @@ nav {
 }
 
 .peliculas-cartelera {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  justify-content: flex-start;  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: space-around; 
 }
 
 .single-card-movie {
@@ -132,6 +132,15 @@ nav {
   border-radius: 8px;
   font-weight: 600;
   margin-top: auto;    
+}
+
+.tituloP {
+    text-align: center;
+}
+
+.filtrado {
+    display: flex;
+    justify-content: center;
 }
 
 @media(min-width: 765px){

@@ -81,8 +81,10 @@ class SeriesPopulares extends Component {
     return (
       this.state.loading ? <h3>Cargando...</h3> :
       <React.Fragment>
+        <div className="tituloP">
         <h2>Series Populares</h2>
-
+        </div>
+        <div className="filtrado">
         <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
@@ -91,7 +93,7 @@ class SeriesPopulares extends Component {
             onChange={(e) => this.controlarCambios(e)}
           />
         </form>
-
+        </div>
         <div className="series-populares">
           {this.state.seriesFiltradas.map((elm, idx) => (
             <SerieCard data={elm} key={idx + elm.id} />

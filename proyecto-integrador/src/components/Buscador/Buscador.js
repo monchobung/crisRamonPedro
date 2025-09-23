@@ -36,13 +36,11 @@ cambiarTipo(event){
   return (
     <React.Fragment>
       <form className="search-form" onSubmit={(event)=> this.ejecutarBusqueda(event)}>
-        <label>Name:</label>
         <input type="text" name="searchData" placeholder="Buscar..." onChange={(event)=> this.controlarCambios(event)} value={this.state.valor}/> 
         <label>Movie</label>
         <input className="" value="movie" type="radio" name="tipo" onChange={(event)=> this.cambiarTipo(event)} defaultChecked/>
         <label>Tv Series</label>
         <input className="" value="tv" type="radio" name="tipo" onChange={(event)=> this.cambiarTipo(event)}/>
-        <button type='submit' className="btn btn-success btn-sm">Buscar</button>
       </form>
   </React.Fragment>
 )}}
